@@ -16,10 +16,14 @@ var y = 650;
 var radiusx = 25;
 var radiusy = 50;
 // var num= [1,2,3,4];
+//tried to make speed x and y random, but it would not run
 var speedx = 3;
 var speedy = 3;
 
+
+
 function setup() {
+
   bad = loadSound('sound/Fail.mp3');
   good = loadSound('sound/good.mp3');
   // start();
@@ -45,6 +49,8 @@ function draw() {
     }
     x += speedx;
     y -= speedy;
+
+
     // rotate(angle);
 
   }
@@ -73,17 +79,29 @@ function draw() {
   line(785, 550, 785, 750);
   endShape();
 
+
+  // let score =0;
   if ((x > 785) & (y < 550)) {
     good.play();
     good.noloop();
+    good.setVolume(0.3);
     speedx=0;
     speedy=0;
+    // score+=3;
   } else if((x > 785) & (y > 550)){
     bad.play();
     good.stop();
     good.noloop();
     bad.noloop();
+    bad.setVolume(0.3);
     speedx=0;
     speedy=0;
+    // score=score;
   }
+  //Score would only display during and not after it scored or not
+  // fill(155);
+  // textSize(30);
+  // text('Score ', 50, 50);
+  // text(score, 150, 50);
+
 }
